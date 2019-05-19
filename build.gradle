@@ -1,0 +1,49 @@
+allprojects{
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    group 'com.tlw'
+    version '1.0'
+    sourceCompatibility = 1.8
+}
+
+subprojects {
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+//    buildscript {
+//        repositories {
+//            mavenLocal()
+//            mavenCentral()
+//        }
+//        dependencies {
+//            classpath 'biz.aQute.bnd:biz.aQute.bnd.gradle:4.2.0'
+//        }
+//    }
+
+    dependencies {
+//        compile (
+//                'org.eclipse.platform:org.eclipse.equinox.common:3.8.0',
+//                'org.eclipse.platform:org.eclipse.core.commands:3.8.1',
+//                'org.eclipse.platform:org.eclipse.core.runtime:3.12.0',
+//        )
+        compileClasspath (
+                'org.osgi:org.osgi.core:6.0.0',
+                'org.eclipse.rap:org.eclipse.rap.jface:3.6.0',
+                'org.eclipse.rap:org.eclipse.rap.rwt:3.6.0',
+                "javax.servlet:javax.servlet-api:3.1.0",
+                'org.osgi:org.osgi.util.tracker:1.5.1',
+                'org.osgi:org.osgi.service.http:1.2.1',
+        )
+        testCompile (
+                'junit:junit:4.12'
+        )
+    }
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+}
+
+

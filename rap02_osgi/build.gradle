@@ -1,0 +1,115 @@
+//TODO karaf插件用来生成feature，似乎没有好的bundle的生成
+//plugins {
+//    id "com.github.lburgazzoli.karaf" version "0.5.1"
+//}
+//
+//karaf {
+//
+//    bundle {
+//
+//    }
+//
+//    features {
+//        xsdVersion = "1.3.0"
+//
+//        feature {
+//            name = "karaf-features-example"
+//            description = "feature-description"
+//            details = "my detailed description"
+//            includeProject = false
+//
+//            conditional {
+//                condition = 'json-p'
+//
+//                feature 'myfeature-1'
+//                feature 'myfeature-2'
+//
+//                bundle 'com.fasterxml.jackson.core'
+//            }
+//        }
+//    }
+//}
+
+//OSGI插件生成的OSGI版本过老
+//apply plugin: 'osgi'
+//jar{
+//    manifest{
+//        instruction 'Bundle-Activator', 'com.tlw.rap.osgi.HelloRapOsgiActivator'
+//        instruction 'Bundle-Vendor', 'tlw_ray@163.com'
+//        instruction 'Import-Package', 'org.eclipse.rap.rwt.application;version="[3.8,4)",org.\n' +
+//                ' eclipse.swt.widgets,org.osgi.framework;version="[4.2,7)"'
+//    }
+//}
+
+
+
+// bnd插件官方资料4.2.0版本并不可用，降为4.1.0可以用， 但生成bundle的功能似乎并不好用
+//buildscript {
+//    repositories {
+//        maven {
+//            url "https://plugins.gradle.org/m2/"
+//        }
+//    }
+//    dependencies {
+//        classpath "biz.aQute.bnd:biz.aQute.bnd.gradle:4.1.0"
+//    }
+//}
+
+plugins {
+//    id "biz.aQute.bnd" version "4.1.0"
+    id "biz.aQute.bnd.builder" version "4.1.0"
+}
+
+apply plugin: 'biz.aQute.bnd.builder'
+apply plugin: 'war'
+//import aQute.bnd.gradle.Bundle
+
+//task bundle(type: Bundle) {
+//    from sourceSets.main.output
+//}
+
+jar{
+//    bnd (
+//            'Import-Package': 'org.eclipse.rap.rwt.application;version="[3.8,4)",org.eclipse.swt.widgets,org.osgi.framework;version="[4.0, 7)"',
+//    )
+
+    manifest {
+        attributes(
+                'Bundle-Activator': 'com.tlw.rap.osgi.Rap02Activator',
+//                'Service-Component': 'OSGI-INF/configuration.xml',
+                'Bundle-Vendor': 'tlw_ray@163.com',
+        )
+    }
+}
+
+//war{
+//    manifest {
+//        attributes(
+//                'Bundle-ClassPath': 'WEB-INF/classes',
+//                'Bundle-Vendor': 'tlw_ray@163.com',
+//                'Import-Package': 'javax.servlet;version="[3.1,4)",javax.servlet.annotation;version="[3.1,4)",javax.servlet.http;version="[3.1,4)",org.eclipse.swt;version="[3.6,4)",org.eclipse.rap.rwt;version="[3.6,4)"',
+//                'Require-Capability': 'osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))',
+//        )
+//    }
+//}
+
+//dependencies {
+//    //注意: 这里要将需要打入war包的依赖项罗列在这里
+//    compile (
+//            'org.eclipse.rap:org.eclipse.rap.jface:3.6.0-SNAPSHOT',
+//            'org.eclipse.rap:org.eclipse.rap.rwt:3.6.0-SNAPSHOT',
+//            "javax.servlet:javax.servlet-api:3.1.0",
+//            'org.osgi:org.osgi.core:6.0.0',
+//            'org.osgi:org.osgi.util.tracker:1.5.1',
+//            'org.osgi:org.osgi.service.http:1.2.1',
+//    )
+//}
+
+dependencies{
+    compileClasspath(
+//            'org.apache.karaf.http:org.apache.karaf.http.core:4.2.4',
+            'org.ops4j.pax.web:pax-web-api:7.3.3',
+//            'org.ops4j.pax.web:pax-web-jetty:7.3.3',
+    )
+}
+

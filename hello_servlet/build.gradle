@@ -1,0 +1,15 @@
+plugins {
+    id "biz.aQute.bnd.builder" version "4.1.0"
+}
+
+apply plugin: 'biz.aQute.bnd.builder'
+
+jar{
+    manifest {
+        attributes(
+                'Bundle-Vendor': 'tlw_ray@163.com',
+                'Bundle-Name': 'com.tlw.servlet',
+                'Export-Package': 'com.tlw.servlet;version="1.0.0"',
+        )
+    }
+}

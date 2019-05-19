@@ -1,0 +1,14 @@
+plugins {
+    id "biz.aQute.bnd.builder" version "4.1.0"
+}
+
+apply plugin: 'biz.aQute.bnd.builder'
+
+jar{
+    manifest {
+        attributes(
+                'Bundle-Activator': 'com.tlw.osgi.servlet.bundle.Activator',
+                'Bundle-Vendor': 'tlw_ray@163.com',
+        )
+    }
+}

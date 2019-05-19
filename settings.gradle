@@ -1,0 +1,10 @@
+rootProject.name = 'hello-rap'
+
+include 'rap01_standalone'
+include 'rap02_osgi'
+include 'rap03_example'
+//include 'rap03_osgi_track'
+include 'servlet01_bundle'
+include 'servlet02_anno_war'
+include 'servlet03_use'
+include 'hello_servlet'

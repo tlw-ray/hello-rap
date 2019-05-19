@@ -1,0 +1,17 @@
+plugins {
+    id "biz.aQute.bnd.builder" version "4.1.0"
+}
+
+apply plugin: 'biz.aQute.bnd.builder'
+apply plugin: 'war'
+
+war{
+    manifest {
+        attributes(
+                'Bundle-ClassPath': 'WEB-INF/classes',
+                'Bundle-Vendor': 'tlw_ray@163.com',
+                'Import-Package': 'javax.servlet;version="[3.1,4)",javax.servlet.annotation;version="[3.1,4)",javax.servlet.http;version="[3.1,4)',
+                'Require-Capability': 'osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))',
+        )
+    }
+}
