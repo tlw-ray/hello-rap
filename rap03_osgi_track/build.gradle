@@ -1,0 +1,27 @@
+plugins {
+    id "biz.aQute.bnd.builder" version "4.1.0"
+}
+
+apply plugin: 'biz.aQute.bnd.builder'
+
+//task bundle(type: Bundle) {
+//    from sourceSets.main.output
+//}
+
+jar{
+    manifest {
+        attributes(
+                'Bundle-Activator': 'org.eclipse.rap.examples.servlet.Activator',
+                'Bundle-Vendor': 'tlw_ray@163.com',
+        )
+    }
+}
+//
+//dependencies {
+//    compile(
+//            'javax.servlet:javax.servlet-api:3.1.0',
+//    )
+//    compileClasspath(
+//            'org.osgi:org.osgi.util.tracker:1.5.1',
+//    )
+//}
