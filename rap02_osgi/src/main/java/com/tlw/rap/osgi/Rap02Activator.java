@@ -20,6 +20,7 @@ public class Rap02Activator implements BundleActivator {
 //    private ServiceTracker anyServiceTracker;
 //    private ServiceRegistration registration;
     private ServiceTracker<WebContainer, WebContainer> webContainerServiceTracker;
+    private ServiceTracker<ServletContext, ServletContext> servletContextServiceTracker;
     @Override
     public void start(BundleContext context) throws Exception {
 
@@ -38,6 +39,9 @@ public class Rap02Activator implements BundleActivator {
 //        httpServiceTracker.open();
         webContainerServiceTracker = new WebContainerServiceTracker(context, WebContainer.class, null);
         webContainerServiceTracker.open();
+
+        servletContextServiceTracker = new ServletContextServiceTracker(context, ServletContext.class, null);
+        servletContextServiceTracker.open();
     }
 
     @Override
@@ -47,5 +51,6 @@ public class Rap02Activator implements BundleActivator {
 //        httpServiceTracker.close();
 //        anyServiceTracker.close();
         webContainerServiceTracker.close();
+        servletContextServiceTracker.close();
     }
 }

@@ -15,7 +15,7 @@ public class Rap02Configuration implements ApplicationConfiguration {
         properties.put( WebClient.PAGE_TITLE, "RAP Example" );
         properties.put( WebClient.PAGE_OVERFLOW, "scrollY" );
         properties.put( WebClient.BODY_HTML, "<big>Loading Application<big>" );
-        properties.put( WebClient.THEME_ID, "MyCustomTheme" );
+//        properties.put( WebClient.THEME_ID, "MyCustomTheme" );
         application.addEntryPoint( "/rap02", Rap02EntryPoint.class, properties);
     }
 

@@ -1,0 +1,21 @@
+plugins {
+    id "biz.aQute.bnd.builder" version "4.1.0"
+}
+
+apply plugin: 'biz.aQute.bnd.builder'
+
+jar{
+    manifest {
+        attributes(
+                'Bundle-Activator': 'com.tlw.osgi.servlet.res.Activator',
+                'Bundle-Vendor': 'tlw_ray@163.com',
+        )
+    }
+}
+dependencies{
+    compileClasspath(
+            project(':hello_servlet'),
+            'org.ops4j.pax.web:pax-web-api:7.3.3',
+
+    )
+}

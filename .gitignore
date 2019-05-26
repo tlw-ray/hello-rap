@@ -3,4 +3,6 @@
 gradle/
 build/
 **/build/
+**/out/
+**/target/
 
